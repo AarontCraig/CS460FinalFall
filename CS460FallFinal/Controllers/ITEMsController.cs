@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CS460FallFinal.Models;
+using CS460FallFinal.Models.ViewModels;
 
 namespace CS460FallFinal.Controllers
 {
@@ -15,10 +16,25 @@ namespace CS460FallFinal.Controllers
         private AuctionContext db = new AuctionContext();
 
         // GET: ITEMs
+        [HttpGet]
         public ActionResult Index()
         {
-            var iTEMs = db.ITEMs.Include(i => i.SELLER1);
-            return View(iTEMs.ToList());
+            //var iTEMs = db.ITEMs.Include(i => i.SELLER1);
+            Item_Bid_VM toReturn = new Item_Bid_VM
+            {
+                CurrentBids = db.BIDs.OrderBy(a => a.PRICE).ToList(),
+                Items = db.ITEMs.ToList()
+            };
+
+            return View(toReturn);
+        }
+
+        [HttpPost]
+        public JsonResult UpdateBids()
+        {
+
+
+            return Json(null);
         }
 
         // GET: ITEMs/Details/5

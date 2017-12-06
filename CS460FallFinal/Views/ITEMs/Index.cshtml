@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CS460FallFinal.Models.ITEM>
+﻿@model CS460FallFinal.Models.ViewModels.Item_Bid_VM
 
 @{
     ViewBag.Title = "Index";
@@ -27,7 +27,7 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Items)
         {
             <tr>
                 <td>
@@ -57,21 +57,21 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BUYER1.NAME)
+                Item
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ITEM1.NAME)
+                Bidder
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PRICE)
+                Price
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TIME)
+                Time
             </th>
             <th></th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.CurrentBids)
         {
             <tr>
                 <td>
@@ -90,3 +90,23 @@
         }
         </table>
 </div>
+
+<script>
+    function updateBids() {
+        $.ajax({
+            url: "/ITEMs/UpdateBids",
+            type: "POST",
+            dataType: 'json',
+            success: function (data) {
+                alert("Success");
+            },
+            error: function () {
+                alert("Failed");
+            }
+        });
+    }
+
+    var interval = 1000 * 5;
+
+    window.setInterval(updateBids(), interval);
+</script>

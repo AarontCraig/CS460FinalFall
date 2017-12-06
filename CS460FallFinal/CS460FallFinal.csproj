@@ -163,6 +163,7 @@
     <Compile Include="Models\BUYER.cs" />
     <Compile Include="Models\ITEM.cs" />
     <Compile Include="Models\SELLER.cs" />
+    <Compile Include="Models\ViewModels\Item_Bid_VM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +210,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\updateBids.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
