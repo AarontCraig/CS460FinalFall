@@ -9,27 +9,29 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            ID
-        </th>
-        <th>
-            Seller
-        </th>
-        <th>
-            Item Name
-        </th>
-        <th>
-            Description
-        </th>
-        <th></th>
-    </tr>
+<div class="row container-fluid" ">
+    <table class="table">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Seller
+            </th>
+            <th>
+                Item Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID)
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SELLER1.NAME)
@@ -41,11 +43,50 @@
             @Html.DisplayFor(modelItem => item.DECRIPTION)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
         </td>
     </tr>
-}
+        }
 
-</table>
+    </table>
+</div>
+
+<div class="row container-fluid">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BUYER1.NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ITEM1.NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PRICE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TIME)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BUYER1.NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ITEM1.NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRICE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TIME)
+                </td>
+            </tr>
+        }
+        </table>
+</div>

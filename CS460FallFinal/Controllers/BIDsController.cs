@@ -49,8 +49,10 @@ namespace CS460FallFinal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ITEM,BUYER,PRICE,TIME")] BID bID)
+        public ActionResult Create([Bind(Include = "ID,ITEM,BUYER,PRICE")] BID bID)
         {
+            bID.TIME = DateTime.Now; //Update the time when the user submits the bid
+
             if (ModelState.IsValid)
             {
                 db.BIDs.Add(bID);
