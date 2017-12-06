@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CS460FallFinal.Models.ITEM>
+﻿@model IEnumerable<CS460FallFinal.Models.BID>
 
 @{
     ViewBag.Title = "Index";
@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            ID
+            @Html.DisplayNameFor(model => model.BUYER1.NAME)
         </th>
         <th>
-            Seller
+            @Html.DisplayNameFor(model => model.ITEM1.NAME)
         </th>
         <th>
-            Item Name
+            @Html.DisplayNameFor(model => model.PRICE)
         </th>
         <th>
-            Description
+            @Html.DisplayNameFor(model => model.TIME)
         </th>
         <th></th>
     </tr>
@@ -29,16 +29,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ID)
+            @Html.DisplayFor(modelItem => item.BUYER1.NAME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SELLER1.NAME)
+            @Html.DisplayFor(modelItem => item.ITEM1.NAME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NAME)
+            @Html.DisplayFor(modelItem => item.PRICE)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DECRIPTION)
+            @Html.DisplayFor(modelItem => item.TIME)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

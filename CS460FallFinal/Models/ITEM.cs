@@ -19,11 +19,14 @@ namespace CS460FallFinal.Models
 
         [Required]
         [StringLength(255)]
+        [Display(Name ="Item Name")]
         public string NAME { get; set; }
 
         [StringLength(8000)]
+        [Display(Name ="Description")]
         public string DECRIPTION { get; set; }
 
+        [Display(Name ="Seller")]
         public int SELLER { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
