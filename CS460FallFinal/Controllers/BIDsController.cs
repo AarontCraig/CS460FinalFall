@@ -51,7 +51,14 @@ namespace CS460FallFinal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,ITEM,BUYER,PRICE")] BID bID)
         {
-            bID.TIME = DateTime.Now; //Update the time when the user submits the bid
+            bID.TIME = new DateTime(
+                DateTime.Now.Year,
+                DateTime.Now.Month,
+                DateTime.Now.Day,
+                DateTime.Now.Hour,
+                DateTime.Now.Minute,
+                DateTime.Now.Second
+                ); //Update the time when the user submits the bid
 
             if (ModelState.IsValid)
             {

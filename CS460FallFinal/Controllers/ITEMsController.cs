@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using CS460FallFinal.Models;
 using CS460FallFinal.Models.ViewModels;
+using System.Web.Helpers;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
 
 namespace CS460FallFinal.Controllers
 {
@@ -22,19 +25,24 @@ namespace CS460FallFinal.Controllers
             //var iTEMs = db.ITEMs.Include(i => i.SELLER1);
             Item_Bid_VM toReturn = new Item_Bid_VM
             {
-                CurrentBids = db.BIDs.OrderBy(a => a.PRICE).ToList(),
+                CurrentBids = db.BIDs.OrderByDescending(a => a.PRICE).ToList(),
                 Items = db.ITEMs.ToList()
             };
 
             return View(toReturn);
         }
 
-        [HttpPost]
-        public JsonResult UpdateBids()
+        
+        public string UpdateBids()
         {
+            JavaScriptSerializer formatter = new JavaScriptSerializer();
 
+            var toReturn = db.BIDs.ToList(); //This doesn't seem to work
 
-            return Json(null);
+            var seriealizedResult = formatter.Serialize(toReturn);
+
+            return (seriealizedResult);
+            //return Json(formatter.Serialize(toReturn), JsonRequestBehavior.AllowGet);
         }
 
         // GET: ITEMs/Details/5

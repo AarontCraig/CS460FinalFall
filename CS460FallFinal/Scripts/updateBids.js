@@ -1,4 +1,4 @@
-﻿function updateBids() {
+﻿function ajax_call() {
     $.ajax({
         url: "/ITEMs/Index",
         type: "POST",
@@ -11,3 +11,5 @@
         }
     });
 }
+
+window.setInterval(ajax_call, 5000);

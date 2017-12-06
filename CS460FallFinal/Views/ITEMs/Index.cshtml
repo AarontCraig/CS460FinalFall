@@ -4,12 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 id="ItemIndex">Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<div class="row container-fluid" ">
+<div class="row container-fluid">
     <table class="table">
         <tr>
             <th>
@@ -54,7 +54,7 @@
 </div>
 
 <div class="row container-fluid">
-    <table class="table">
+    <table class="BidTable table">
         <tr>
             <th>
                 Item
@@ -91,7 +91,30 @@
         </table>
 </div>
 
-<script>
+<script type="text/javascript">
+    function ajax_call() {
+        $.ajax({
+            url: "/ITEMs/UpdateBids",
+            type: "GET",
+            dataType: "string",
+            success: function (data) {
+                alert("Success");
+                for (var i = 0; i < data.length; ++i)
+                {
+                    $('.BidTable').prepend(data[i].BUYER1.NAME);
+                }
+            },
+            error: function () {
+                alert("Failed");
+            }
+        });
+    }
+
+    window.setInterval(ajax_call, 5000);
+</script>
+
+<!---
+<script type="text/javascript">
     function updateBids() {
         $.ajax({
             url: "/ITEMs/UpdateBids",
@@ -109,4 +132,4 @@
     var interval = 1000 * 5;
 
     window.setInterval(updateBids(), interval);
-</script>
+</script> -->
